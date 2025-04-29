@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- needed to scale tablet display -->
+    <meta name="viewport" content="width=1280, user-scalable=no" />
+    <!-- application css -->
+    <link media="screen" href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="unselectable">
+
+    <div class="tabletsized">
+
+        <!-- 1) Lift/Lower Right Arm -->
+        <div id="button1" class="centered" style="display:none">
+          <label for="rsp-angle-input">Lift/Lower Right Arm (&deg;):</label>
+          <input type="number" id="rsp-angle-input" value="0" min="-90" max="90" style="width:4em; text-align:center"/>
+          <button id="btn-set1" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 2) Lift/Lower Left Arm -->
+        <div id="button2" class="centered" style="display:none">
+          <label for="lsp-angle-input">Lift/Lower Left Arm (&deg;):</label>
+          <input type="number" id="lsp-angle-input" value="0" min="-90" max="90" style="width:4em; text-align:center"/>
+          <button id="btn-set2" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 3) Twist Right Elbow In/Out -->
+        <div id="button3" class="centered" style="display:none">
+          <label for="rey-angle-input">Twist Right Elbow (&deg;):</label>
+          <input type="number" id="rey-angle-input" value="0" min="-120" max="120" style="width:4em; text-align:center"/>
+          <button id="btn-set3" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 4) Twist Right Wrist In/Out -->
+        <div id="button4" class="centered" style="display:none">
+          <label for="rwy-angle-input">Twist Right Wrist (&deg;):</label>
+          <input type="number" id="rwy-angle-input" value="0" min="-180" max="180" style="width:4em; text-align:center"/>
+          <button id="btn-set4" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 5) Twist Left Elbow In/Out -->
+        <div id="button5" class="centered" style="display:none">
+          <label for="ley-angle-input">Twist Left Elbow (&deg;):</label>
+          <input type="number" id="ley-angle-input" value="0" min="-120" max="120" style="width:4em; text-align:center"/>
+          <button id="btn-set5" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 6) Twist Left Wrist In/Out -->
+        <div id="button6" class="centered" style="display:none">
+          <label for="lwy-angle-input">Twist Left Wrist (&deg;):</label>
+          <input type="number" id="lwy-angle-input" value="0" min="-180" max="180" style="width:4em; text-align:center"/>
+          <button id="btn-set6" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+        <!-- 7) Turn Head Left/Right -->
+        <div id="button7" class="centered" style="display:none">
+          <label for="hyaw-angle-input">Turn Head (&deg;):</label>
+          <input type="number" id="hyaw-angle-input" value="0" min="-90" max="90" style="width:4em; text-align:center"/>
+          <button id="btn-set7" class="bigfriendlybutton">Set angle</button>
+        </div>
+
+
+
+        <!-- Reset & Exit -->
+        <div id="controls" class="centered" style="display:none; margin-top:1em">
+            <button id="btn-reset" class="bigfriendlybutton">Reset All</button>
+            <button id="btn-exit"  class="bigfriendlybutton danger">Exit App</button>
+        </div>
+
+        <!-- Right: image panel -->
+    <div class="images-column" id="images-panel">
+      <!-- Example placeholder images -->
+      <img src="images/pose1.png" alt="Target Pose 1" />
+      <!-- Add more or dynamically inject via JS -->
+    </div>
+
+        <!-- Fallback if service not found -->
+        <div id="noservice" class="centered" style="display:none; margin-top:2em">
+            Service Joint not found :(
+        </div>
+    </div>
+
+    <!-- Dependencies (order matters) -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/robotutils.js"></script>
+    <script src="js/main.js"></script>
+    <script>$(document).ready(application);</script>
+</body>
+</html>
