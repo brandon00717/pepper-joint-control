@@ -1,10 +1,12 @@
 # Joint-Control App
 
-Control Pepper’s arm and head joints to match a target pose displayed on the tablet.
+A tablet app and NAOqi service for controlling a SoftBank Pepper robot's arm and head joints. Set a target pose on Pepper's tablet and the robot matches it: a Python service running on Pepper moves each joint to the requested angle, holds it there with a per-joint thread, and speaks what it is doing ("Right shoulder raising", "Head turning left").
+
+Supported joints: left and right shoulder pitch, elbow yaw, and wrist yaw, plus head yaw. Angles are entered in degrees and clamped to each joint's safe range.
 
 ## Prerequisites
 
-- Pepper must be connected to the **CSHRI_ASUS** Wi-Fi network.  
+- Pepper must be connected to the same Wi-Fi network as your computer (ask your lab instructor which network, and for Pepper's IP address and login password).
 - An SSH client (OpenSSH, PuTTY, etc.) installed on your computer.
 
 ---
@@ -14,8 +16,8 @@ Control Pepper’s arm and head joints to match a target pose displayed on the t
 Open a terminal and run:
 
 ```bash
-ssh nao@192.168.137.48
-# password: cruJe7ra
+ssh nao@<PEPPER_IP>
+# use the password provided by your lab instructor
 ```
 
 ---
@@ -27,36 +29,37 @@ cd /data/home/nao/.local/share/PackageManager/apps/joint-control/scripts
 python2 joint.py
 ```
 
-> **Leave this terminal open** — the NAOqi service must keep running while you use the tablet UI.
+> **Leave this terminal open.** The NAOqi service must keep running while you use the tablet UI.
 
 ---
 
 ## 3. Launch the tablet app
 
-1. On Pepper’s tablet screen, tap the **⋮** (three-dots) menu icon in the bottom-right corner.  
-2. Scroll to **joint-control** in the list.  
+1. On Pepper's tablet screen, tap the **⋮** (three-dots) menu icon in the bottom-right corner.
+2. Scroll to **joint-control** in the list.
 3. Tap **joint-control** to open the app.
 
 You will see:
 
-- **Top Section**: Controls for each joint (inputs + Set buttons).  
+- **Top Section**: Controls for each joint (inputs + Set buttons).
 - **Bottom Section**: An image showing the target pose.
 
 ---
 
 ## 4. Using the UI
 
-- **Set a single joint**  
-  1. Enter an angle (in degrees) into the input field for that joint.  
-  2. Tap **Set Angle**.  
+- **Set a single joint**
+  1. Enter an angle (in degrees) into the input field for that joint.
+  2. Tap **Set Angle**.
+
   Pepper will move and hold that joint at the specified angle.
 
-- **Reset All**  
+- **Reset All**
   Tap **Reset All** to return every joint to its neutral position.
 
-- **Exit App**  
+- **Exit App**
   1. Tap **Exit App** to start the closing process
-  2. Put your hands over peppers forehead until you hear a bubble pop sound, then release your hand
+  2. Put your hands over Pepper's forehead until you hear a bubble pop sound, then release your hand
 
 ---
 
@@ -68,18 +71,17 @@ In the SSH terminal where `joint.py` is running, press:
 
 This will:
 
-- Reset joints to neutral  
+- Reset joints to neutral
 - Terminate the Python process
 
 ---
 
 ## Troubleshooting
 
-- **“Service Joint not found”**  
-  - Ensure `joint.py` is still running without errors.  
-  - Stop service and run again using steps **5** and **2**
-
+- **"Service Joint not found"**
+  - Ensure `joint.py` is still running without errors.
+  - Stop the service and run it again using steps **5** and **2**
 
 ---
 
-Enjoy matching Pepper’s joints to your target poses!
+Enjoy matching Pepper's joints to your target poses!
